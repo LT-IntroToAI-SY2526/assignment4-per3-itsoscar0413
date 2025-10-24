@@ -14,7 +14,7 @@ class Dog:
         age: how old a dog is
         favorite_food: the favorite food of the dog
     """
-    def __init__(self, fur_color, name, age, favorite_food): # self word means "this" (current object)
+    def __init__(self, fur_color="black", name="no name", age = 1, favorite_food="kibbles"): # self word means "this" (current object)
         """initialize a new Dog with fur_color, name, age and favorite food"""
         self.fur_color = fur_color
         self.name = name
@@ -33,18 +33,34 @@ class Dog:
     def sleep(self):
         """practicing, to make the dog sleep"""
         return f"{self.name} went to sleep! Sweet dreams :)"
+    
+    def birthday(self):
+        """make the age increase by 1
+            celebrate the dog's birthday!!"""
+        self.age+=1
+        print(f"celebrating {self.name}'s birthday, they are now {self.age} years old!")
+
+    def change_favorite_food(self, new_food): #manipulator? to change the variable value with method
+        """changing the dog's favorite food"""
+        old_food = self.favorite_food
+        self.favorite_food = new_food
+        print(f"{self.name} used to love {old_food} and now loves {self.favorite_food}")
 
 
 
 my_dog = Dog("black", "logan", 9, "salmon")
 enggy_dog = Dog("black and white", "petuchini", 13, "rice")
 random_dog = Dog("yellow", "bennyboy", 3, "kibble")
+default_dog = Dog()
+aaron_dog = Dog("peach and white", "dumbo", favorite_food="anything edible")
 
 print()
 
 print(my_dog)
 print(enggy_dog)
 print(random_dog)
+print(default_dog)
+print(aaron_dog)
 
 print()
 
@@ -55,5 +71,14 @@ print()
 
 print(enggy_dog.sleep())
 print(random_dog.sleep())
+print(default_dog.sleep())
 
 print()
+
+aaron_dog.birthday()
+print(aaron_dog)
+
+print()
+
+random_dog.change_favorite_food("steak")
+print(random_dog)
