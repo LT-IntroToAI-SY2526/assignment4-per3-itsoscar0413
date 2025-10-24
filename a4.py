@@ -9,8 +9,14 @@ class TTTBoard:
         board - a list of '*'s, 'X's & 'O's. 'X's represent moves by player 'X', 'O's
             represent moves by player 'O' and '*'s are spots no one has yet played on
     """
+    def __init__(self):
+        self.board = 9 * ["*"]
 
-    pass
+    def __str__(self):
+        board_str = ""
+        for i in range(0, 9, 3): #chatgpt helped with this. it starts at 0 and goes to 9 (like the 9 items in the list), and breaks it into 3
+            board_str += f"{self.board[i]} {self.board[i+1]} {self.board[i+2]}\n"
+        return board_str
 
 
 def play_tic_tac_toe() -> None:
