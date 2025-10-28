@@ -18,6 +18,41 @@ class TTTBoard:
             board_str += f"{self.board[i]} {self.board[i+1]} {self.board[i+2]}\n"
         return board_str
 
+    def make_move(self, player, pos):
+        # This checks if the spot is invalid or full, and if it is, it returns false
+        if pos < 0 or pos > 8:
+            return False
+        if self.board[pos] != "*":
+            return False
+    
+        # If the move was made successfully, it returns true and makes the move
+        self.board[pos] = player
+        return True
+
+    def has_won(self, player):
+        #the stuff below is what counts as a win
+        wins = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], #rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], #column
+            [0, 4, 8], [2, 4, 6] #diagnol
+        ]
+        for order in wins:
+            if all(self.board[i] == player for i in order):
+                return True
+        return False
+    
+    def game_over(self):
+        # it returns true if someone won (with 'x' or 'o'), or if the board is full and doesn't have any '*' left, returns true
+        if self.has_won("X") or self.has_won("O"):
+            return True
+        if "*" not in self.board:
+            return True
+        # if none of that falls into this, it returns false and game keeps going
+        return False
+
+    def clear(self):
+        # clears the board, reused code from __init__
+        self.board = 9 * ["*"]
 
 def play_tic_tac_toe() -> None:
     """Uses your class to play TicTacToe"""
