@@ -127,6 +127,17 @@ if __name__ == "__main__":
     assert brd.has_won("O") == True
     assert brd.game_over() == True
 
+    "Additional assert below"
+    brd.clear()
+    brd.make_move("X", 0)
+    brd.make_move("X", 3)
+    brd.make_move("X", 6)
+
+    assert brd.has_won("X") == True
+    assert brd.has_won("O") == False
+    assert brd.game_over() == True
+
+
     print("All tests passed!")
 
     # uncomment to play!
